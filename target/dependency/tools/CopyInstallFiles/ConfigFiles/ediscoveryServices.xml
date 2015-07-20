@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config component = "EdiscoveryServices">
+
+  <targetDir>./</targetDir>
+  <destinationRoot>InstallFiles/Services/</destinationRoot>
+  
+  <copyFolder>
+    <target>eDiscoverySource/BusinessServices.WindowsHost/bin/Release.Win32/</target>    
+    <destination>x86/eDiscovery/Business Services/</destination>        
+    <filter>GeneralFilter.xml</filter>            
+  </copyFolder>
+  
+  <copyFolder>
+    <target>eDiscoverySource/BusinessServices.WindowsHost/bin/Release/</target>
+    <destination>x64/eDiscovery/Business Services/</destination>
+    <filter>GeneralFilter.xml</filter>
+  </copyFolder>
+
+
+  <copyFolder>
+    <target>eDiscoverySource/OrchestrationServices.WindowsHost/bin/Release.Win32/</target>
+    <destination>x86/eDiscovery/Orchestration Services/</destination>
+    <filter>GeneralFilter.xml</filter>
+  </copyFolder>
+
+  <copyFolder>
+    <target>eDiscoverySource/OrchestrationServices.WindowsHost/bin/Release/</target>
+    <destination>x64/eDiscovery/Orchestration Services/</destination>
+    <filter>GeneralFilter.xml</filter>
+  </copyFolder>
+
+  <copyFolder>
+    <target>InfrastructureSource/LicensingServices.Host/bin/Release.Win32/</target>
+    <destination>x86/eDiscovery/License Service/</destination>
+    <filter>GeneralFilter.xml</filter>
+  </copyFolder>
+
+  <copyFolder>
+    <target>InfrastructureSource/LicensingServices.Host/bin/Release/</target>
+    <destination>x64/eDiscovery/License Service/</destination>
+    <filter>GeneralFilter.xml</filter>
+  </copyFolder>
+
+  <copyFolder>
+    <target>InfrastructureSource/WorkDistribution.WindowsHost/bin/Release.Win32/</target>
+    <destination>x86/Common/Infrastructure Work Distribution Services/</destination>
+    <filter>GeneralFilter.xml</filter>
+  </copyFolder>
+
+  <copyFolder>
+    <target>InfrastructureSource/WorkDistribution.WindowsHost/bin/Release/</target>
+    <destination>x64/Common/Infrastructure Work Distribution Services/</destination>
+    <filter>GeneralFilter.xml</filter>
+  </copyFolder>
+
+  <copyFolder>
+    <target>InfrastructureSource/Services.WindowsHost/bin/Release.Win32/</target>
+    <destination>x86/Common/Infrastructure Business Services/</destination>
+    <filter>GeneralFilter.xml</filter>
+  </copyFolder>
+
+  <copyFolder>
+    <target>InfrastructureSource/Services.WindowsHost/bin/Release/</target>
+    <destination>x64/Common/Infrastructure Business Services/</destination>
+    <filter>GeneralFilter.xml</filter>
+  </copyFolder>
+
+  <copyFolder>
+    <target>Other/TimedSyncAndNotify/TimedSyncAndNotify.WindowsService/bin/Release.Win32/</target>
+    <destination>x86/eDiscovery/Timed Sync and Notify Service/</destination>
+    <filter>GeneralFilter.xml</filter>
+  </copyFolder>
+
+  <copyFolder>
+    <target>Other/TimedSyncAndNotify/TimedSyncAndNotify.WindowsService/bin/Release/</target>
+    <destination>x64/eDiscovery/Timed Sync and Notify Service/</destination>
+    <filter>GeneralFilter.xml</filter>
+  </copyFolder>
+
+
+
+  <copyFolder>
+    <target>Other/PssAtlasSynchronization/PssAtlas.SyncServices.Host/bin/Release/</target>
+    <destination>x64/eDiscovery/PSS Atlas/</destination>
+    <filter>GeneralFilter.xml</filter>
+  </copyFolder>
+  
+  
+
+
+</config>

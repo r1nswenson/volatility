@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" Condition="'$(MavenTargetDir)'==''">
+    <MavenTargetDir Condition="Exists('$(SolutionDir)..\..\..\..\target')">$(SolutionDir)..\..\..\..\target\</MavenTargetDir>
+    <MavenTargetDir Condition="Exists('$(SolutionDir)..\..\..\target')">$(SolutionDir)..\..\..\target\</MavenTargetDir>
+    <MavenTargetDir Condition="Exists('$(SolutionDir)..\..\target')">$(SolutionDir)..\..\target\</MavenTargetDir>
+    <MavenTargetDir Condition="Exists('$(SolutionDir)..\target')">$(SolutionDir)..\target\</MavenTargetDir>
+    <MavenTargetDir Condition="Exists('$(SolutionDir)target')">$(SolutionDir)target\</MavenTargetDir>
+  </PropertyGroup>
+  <PropertyGroup Label="UserMacros">
+    <FrameworkName Condition="'$(MSBuildToolsVersion)'=='3.5'">vc90</FrameworkName>
+    <FrameworkName Condition="'$(MSBuildToolsVersion)'=='4.0'">vc100</FrameworkName>
+    <!-- Using vc100 temporarily; this will change to vc120 when we're ready -->
+    <FrameworkName Condition="'$(MSBuildToolsVersion)'=='12.0'">vc100</FrameworkName>
+    <FrameworkName Condition="'$(TargetFrameworkIdentifier)'=='Silverlight'">silverlight</FrameworkName>
+    <FrameworkName Condition="'$(FrameworkName)'==''">vc_other</FrameworkName>
+    <NativeType Condition="'$(OutputType)'=='WinExe'">Exe</NativeType>
+    <NativeType Condition="'$(OutputType)'=='Exe'">Exe</NativeType>
+    <NativeType Condition="'$(OutputType)'=='Library'">DynamicLibrary</NativeType>
+    <NativeType Condition="'$(ConfigurationType)'=='DynamicLibrary'">DynamicLibrary</NativeType>
+    <NativeType Condition="'$(ConfigurationType)'=='StaticLibrary'">StaticLibrary</NativeType>
+    <NativeType Condition="'$(ConfigurationType)'=='Application'">Exe</NativeType>
+    <NativePlatform Condition="'$(Platform)'=='x86'">Win32</NativePlatform>
+    <NativePlatform Condition="'$(Platform)'=='AnyCPU'">any</NativePlatform>
+    <NativePlatform Condition="'$(NativePlatform)'==''">$(Platform)</NativePlatform>
+    <DependencyDir Condition="Exists('$(MavenTargetDir)dependency')">$(MavenTargetDir)dependency\</DependencyDir>
+    <DependencyDir Condition="Exists('$(MavenTargetDir)deps')">$(MavenTargetDir)deps\</DependencyDir>
+    <DependencyDir Condition="Exists('$(SolutionDir)deps')">$(SolutionDir)deps\</DependencyDir>
+    <WorkDir Condition="'$(WorkDir)'==''">$(MavenTargetDir)</WorkDir>
+    <SlnOutBinDir Condition="'$(NativePlatform)'=='any'">$(WorkDir)bin\$(FrameworkName)$(FrameworkOutQualifier)\$(Configuration)\</SlnOutBinDir>
+    <SlnOutBinDir Condition="'$(SlnOutBinDir)'==''">$(WorkDir)bin\$(FrameworkName)$(FrameworkOutQualifier)\$(Configuration).$(NativePlatform)\</SlnOutBinDir>
+    <SlnOutLibDir>$(WorkDir)lib\$(FrameworkName)$(FrameworkOutQualifier)\$(Configuration).$(NativePlatform)\</SlnOutLibDir>
+    <ProjIntermediateDir>$(WorkDir)obj\$(FrameworkName)$(FrameworkOutQualifier)\$(Configuration).$(Platform)\$(ProjectName)\</ProjIntermediateDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <BuildMacro Include="MavenTargetDir">
+      <Value>$(MavenTargetDir)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+  </ItemGroup>
+  <ItemGroup>
+    <BuildMacro Include="DependencyDir">
+      <Value>$(DependencyDir)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+  </ItemGroup>
+  <ItemGroup>
+    <BuildMacro Include="SlnOutBinDir">
+      <Value>$(SlnOutBinDir)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+  </ItemGroup>
+  <ItemGroup>
+    <BuildMacro Include="SlnOutLibDir">
+      <Value>$(SlnOutLibDir)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+  </ItemGroup>
+  <ItemGroup>
+    <BuildMacro Include="ProjIntermediateDir">
+      <Value>$(ProjIntermediateDir)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+  </ItemGroup>
+  <Target Name="Status">
+    <Message Text="MavenTargetDir = $(MavenTargetDir)"/>
+    <Message Text="DependencyDir = $(DependencyDir)"/>
+    <Message Text="WorkDir = $(WorkDir)"/>
+  </Target>
+</Project>

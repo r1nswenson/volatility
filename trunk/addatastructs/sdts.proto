@@ -1,0 +1,38 @@
+package memory;
+
+message UnspecifiedType
+{
+	required string baseObjectType = 1;
+	required bytes object = 2;
+}
+
+message SSDTEntryType
+{
+	required string FunctionName = 1;
+	required string ModuleName = 2;
+	required uint64 VirtAddr = 3;
+	optional bytes Index = 4;
+}
+
+message SSDTEntriesType
+{
+	repeated SSDTEntryType SSDTEntry = 1;
+	optional int32 count = 2;
+}
+
+message SSDTType
+{
+	required uint64 VirtAddr = 1;
+	required SSDTEntriesType SSDTEntries = 2;
+}
+
+message SSDTsType
+{
+	repeated SSDTType SSDT = 1;
+}
+
+message rootType
+{
+	required SSDTsType SSDTs = 1;
+}
+

@@ -1,0 +1,90 @@
+package memory;
+
+message UnspecifiedType
+{
+	required string baseObjectType = 1;
+	required bytes object = 2;
+}
+
+message DeviceType
+{
+	required string Name = 1;
+	required uint64 DeviceObj_Location = 2;
+	required uint64 DriverObj_Location = 3;
+	required uint64 NextDeviceObj_Location = 4;
+	required uint64 AttachedDeviceObj_Location = 5;
+}
+
+message Driver_Device_ListType
+{
+	repeated DeviceType Device = 1;
+}
+
+message DriverType
+{
+	required string ServiceKeyName = 1;
+	required string ImagePath = 2;
+	required int32 Type = 3;
+	required uint64 DriverObj_Location = 4;
+	required uint64 DeviceObj_Location = 5;
+	required uint64 Driver_Init = 6;
+	required uint64 Driver_StartIO = 7;
+	required uint64 Driver_Unload = 8;
+	required uint64 BaseAddress = 9;
+	required string StartTime = 10;
+	required string Dependencies = 11;
+	required uint64 Size = 12;
+	required int32 Instances = 13;
+	required string Name = 14;
+	required string StartedAs = 15;
+	required int32 State = 16;
+	required int32 RealState = 17;
+	required int32 StartMode = 18;
+	required int32 RealStartMode = 19;
+	required int32 RealType = 20;
+	required string Path = 21;
+	required string plist = 22;
+	required string MD5 = 23;
+	required string SHA1 = 24;
+	optional int32 FuzzySize = 25;
+	optional string Fuzzy = 26;
+	optional string Fuzzy2X = 27;
+	required int32 KFFStatus = 28;
+	required int32 processid = 29;
+	required uint64 IRP_MJ_CREATE = 30;
+	required uint64 IRP_MJ_CREATE_NAMED_PIPE = 31;
+	required uint64 IRP_MJ_CLOSE = 32;
+	required uint64 IRP_MJ_READ = 33;
+	required uint64 IRP_MJ_WRITE = 34;
+	required uint64 IRP_MJ_QUERY_INFORMATION = 35;
+	required uint64 IRP_MJ_SET_INFORMATION = 36;
+	required uint64 IRP_MJ_QUERY_EA = 37;
+	required uint64 IRP_MJ_SET_EA = 38;
+	required uint64 IRP_MJ_FLUSH_BUFFERS = 39;
+	required uint64 IRP_MJ_QUERY_VOLUME_INFORMATION = 40;
+	required uint64 IRP_MJ_SET_VOLUME_INFORMATION = 41;
+	required uint64 IRP_MJ_DIRECTORY_CONTROL = 42;
+	required uint64 IRP_MJ_FILE_SYSTEM_CONTROL = 43;
+	required uint64 IRP_MJ_DEVICE_CONTROL = 44;
+	required uint64 IRP_MJ_INTERNAL_DEVICE_CONTROL = 45;
+	required uint64 IRP_MJ_SHUTDOWN = 46;
+	required uint64 IRP_MJ_LOCK_CONTROL = 47;
+	required uint64 IRP_MJ_CLEANUP = 48;
+	required uint64 IRP_MJ_CREATE_MAILSLOT = 49;
+	required uint64 IRP_MJ_QUERY_SECURITY = 50;
+	required uint64 IRP_MJ_SET_SECURITY = 51;
+	required uint64 IRP_MJ_POWER = 52;
+	required uint64 IRP_MJ_SYSTEM_CONTROL = 53;
+	required uint64 IRP_MJ_DEVICE_CHANGE = 54;
+	required uint64 IRP_MJ_QUERY_QUOTA = 55;
+	required uint64 IRP_MJ_SET_QUOTA = 56;
+	required uint64 IRP_MJ_PNP = 57;
+	optional Driver_Device_ListType Driver_Device_List = 58;
+	optional int32 resultitemtype = 59;
+}
+
+message rootType
+{
+	repeated DriverType Driver = 1;
+}
+

@@ -1,0 +1,34 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Processor" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:byte" name="ID"/>
+              <xs:element name="InterruptDescriptorTable">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="IDTEntry" maxOccurs="256" minOccurs="256">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="InterruptGate" maxOccurs="1" minOccurs="0"/>
+                          <xs:element type="xs:string" name="TaskGate" maxOccurs="1" minOccurs="0"/>
+                          <xs:element type="xs:string" name="InvalidGate" maxOccurs="1" minOccurs="0"/>
+                          <xs:element type="xs:string" name="TrapGate" maxOccurs="1" minOccurs="0"/>
+                          <xs:element type="xs:long" name="Address"/>
+                          <xs:element type="xs:short" name="Selector"/>
+                          <xs:element type="xs:short" name="Attributes"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

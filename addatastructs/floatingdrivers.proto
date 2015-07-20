@@ -1,0 +1,12 @@
+package memory;
+
+message FloatingDriverType
+{
+	required string Name = 1;
+	required string Path = 2;
+}
+
+message rootType
+{
+	repeated FloatingDriverType FloatingDriver = 1;
+}

@@ -1,0 +1,89 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Driver" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="ServiceKeyName"/>
+              <xs:element type="xs:string" name="ImagePath"/>
+              <xs:element type="xs:byte" name="Type"/>
+              <xs:element type="xs:int" name="DriverObj_Location"/>
+              <xs:element type="xs:int" name="DeviceObj_Location"/>
+              <xs:element type="xs:long" name="Driver_Init"/>
+              <xs:element type="xs:long" name="Driver_StartIO"/>
+              <xs:element type="xs:long" name="Driver_Unload"/>
+              <xs:element type="xs:long" name="BaseAddress"/>
+              <xs:element type="xs:string" name="StartTime"/>
+              <xs:element type="xs:string" name="Dependencies"/>
+              <xs:element type="xs:int" name="Size"/>
+              <xs:element type="xs:byte" name="Instances"/>
+              <xs:element type="xs:string" name="Name"/>
+              <xs:element type="xs:string" name="StartedAs"/>
+              <xs:element type="xs:byte" name="State"/>
+              <xs:element type="xs:byte" name="RealState"/>
+              <xs:element type="xs:byte" name="StartMode"/>
+              <xs:element type="xs:byte" name="RealStartMode"/>
+              <xs:element type="xs:byte" name="RealType"/>
+              <xs:element type="xs:string" name="Path"/>
+              <xs:element type="xs:string" name="plist"/>
+              <xs:element type="xs:string" name="MD5"/>
+              <xs:element type="xs:string" name="SHA1"/>
+              <xs:element type="xs:short" name="FuzzySize"/>
+              <xs:element type="xs:string" name="Fuzzy"/>
+              <xs:element type="xs:string" name="Fuzzy2X"/>
+              <xs:element type="xs:byte" name="KFFStatus"/>
+              <xs:element type="xs:short" name="processid"/>
+              <xs:element type="xs:long" name="IRP_MJ_CREATE"/>
+              <xs:element type="xs:long" name="IRP_MJ_CREATE_NAMED_PIPE"/>
+              <xs:element type="xs:long" name="IRP_MJ_CLOSE"/>
+              <xs:element type="xs:long" name="IRP_MJ_READ"/>
+              <xs:element type="xs:long" name="IRP_MJ_WRITE"/>
+              <xs:element type="xs:long" name="IRP_MJ_QUERY_INFORMATION"/>
+              <xs:element type="xs:long" name="IRP_MJ_SET_INFORMATION"/>
+              <xs:element type="xs:long" name="IRP_MJ_QUERY_EA"/>
+              <xs:element type="xs:long" name="IRP_MJ_SET_EA"/>
+              <xs:element type="xs:long" name="IRP_MJ_FLUSH_BUFFERS"/>
+              <xs:element type="xs:long" name="IRP_MJ_QUERY_VOLUME_INFORMATION"/>
+              <xs:element type="xs:long" name="IRP_MJ_SET_VOLUME_INFORMATION"/>
+              <xs:element type="xs:long" name="IRP_MJ_DIRECTORY_CONTROL"/>
+              <xs:element type="xs:long" name="IRP_MJ_FILE_SYSTEM_CONTROL"/>
+              <xs:element type="xs:long" name="IRP_MJ_DEVICE_CONTROL"/>
+              <xs:element type="xs:long" name="IRP_MJ_INTERNAL_DEVICE_CONTROL"/>
+              <xs:element type="xs:long" name="IRP_MJ_SHUTDOWN"/>
+              <xs:element type="xs:long" name="IRP_MJ_LOCK_CONTROL"/>
+              <xs:element type="xs:long" name="IRP_MJ_CLEANUP"/>
+              <xs:element type="xs:long" name="IRP_MJ_CREATE_MAILSLOT"/>
+              <xs:element type="xs:long" name="IRP_MJ_QUERY_SECURITY"/>
+              <xs:element type="xs:long" name="IRP_MJ_SET_SECURITY"/>
+              <xs:element type="xs:long" name="IRP_MJ_POWER"/>
+              <xs:element type="xs:long" name="IRP_MJ_SYSTEM_CONTROL"/>
+              <xs:element type="xs:long" name="IRP_MJ_DEVICE_CHANGE"/>
+              <xs:element type="xs:long" name="IRP_MJ_QUERY_QUOTA"/>
+              <xs:element type="xs:long" name="IRP_MJ_SET_QUOTA"/>
+              <xs:element type="xs:long" name="IRP_MJ_PNP"/>
+              <xs:element name="Driver_Device_List" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Device" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="Name"/>
+                          <xs:element type="xs:int" name="DeviceObj_Location"/>
+                          <xs:element type="xs:int" name="DriverObj_Location"/>
+                          <xs:element type="xs:int" name="NextDeviceObj_Location"/>
+                          <xs:element type="xs:int" name="AttachedDeviceObj_Location"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:byte" name="resultitemtype" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

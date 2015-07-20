@@ -1,0 +1,162 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Process" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="Name"/>
+              <xs:element type="xs:string" name="Path"/>
+              <xs:element type="xs:string" name="StartTime"/>
+              <xs:element type="xs:string" name="WorkingDir"/>
+              <xs:element type="xs:string" name="CommandLine"/>
+              <xs:element type="xs:unsignedLong" name="LinkTime"/>
+              <xs:element type="xs:unsignedInt" name="Subsystem"/>
+              <xs:element type="xs:unsignedLong" name="Imagebase"/>
+              <xs:element type="xs:unsignedInt" name="Characteristics"/>
+              <xs:element type="xs:unsignedLong" name="Checksum"/>
+              <xs:element type="xs:unsignedLong" name="KernelTime"/>
+              <xs:element type="xs:unsignedLong" name="UserTime"/>
+              <xs:element type="xs:unsignedLong" name="Privileges"/>
+              <xs:element type="xs:int" name="PID"/>
+              <xs:element type="xs:int" name="ParentPID"/>
+              <xs:element type="xs:string" name="User"/>
+              <xs:element type="xs:string" name="Group"/>
+              <xs:element type="xs:hexBinary" name="MD5"/>
+              <xs:element type="xs:hexBinary" name="SHA1"/>
+              <xs:element type="xs:int" name="FuzzySize"/>
+              <xs:element type="xs:string" name="Fuzzy"/>
+              <xs:element type="xs:string" name="Fuzzy2X"/>
+              <xs:element type="xs:long" name="KFFStatus"/>
+              <xs:element type="xs:string" name="Hidden" minOccurs="0"/>
+              <xs:element type="xs:string" name="FromMemory"/>
+              <xs:element type="xs:string" name="EffectiveUser"/>
+              <xs:element type="xs:string" name="EffectiveGroup"/>
+              <xs:element type="xs:int" name="Size"/>
+              <xs:element type="xs:long" name="EProcBlockLoc"/>
+              <xs:element type="xs:string" name="WindowTitle"/>
+              <xs:element type="xs:long" name="SDT" maxOccurs="unbounded" minOccurs="0"/>
+              <xs:element name="Open_Sockets_List">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Socket" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:int" name="Port"/>
+                          <xs:element type="xs:string" name="LocalAddress"/>
+                          <xs:element type="xs:int" name="RemotePort"/>
+                          <xs:element type="xs:string" name="RemoteAddress"/>
+                          <xs:element type="xs:string" name="Proto"/>
+                          <xs:element type="xs:string" name="UDP" maxOccurs="1" minOccurs="0"/>
+                          <xs:element type="xs:int" name="State"/>
+                          <xs:element type="xs:byte" name="RealState"/>
+                          <xs:element type="xs:string" name="ProcessName"/>
+                          <xs:element type="xs:string" name="Path" maxOccurs="1" minOccurs="0"/>
+                          <xs:element type="xs:string" name="FromMemory"/>
+                          <xs:element type="xs:int" name="PID"/>
+                        </xs:sequence>
+                        <xs:attribute type="xs:byte" name="resultitemtype" use="optional"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute type="xs:byte" name="count"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Loaded_DLL_List">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DLL" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="Name"/>
+                          <xs:element type="xs:string" name="Description"/>
+                          <xs:element type="xs:string" name="Path"/>
+                          <xs:element type="xs:string" name="Version"/>
+                          <xs:element type="xs:hexBinary" name="MD5"/>
+                          <xs:element type="xs:hexBinary" name="SHA1"/>
+                          <xs:element type="xs:int" name="FuzzySize"/>
+                          <xs:element type="xs:string" name="Fuzzy"/>
+                          <xs:element type="xs:string" name="Fuzzy2X"/>
+                          <xs:element type="xs:string" name="CreateTime"/>
+                          <xs:element type="xs:long" name="KFFStatus"/>
+                          <xs:element type="xs:int" name="PID"/>
+                          <xs:element type="xs:unsignedLong" name="baseAddress"/>
+                          <xs:element type="xs:unsignedLong" name="ImageSize"/>
+                          <xs:element type="xs:string" name="ProcessName"/>
+                          <xs:element type="xs:string" name="FromMemory"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Open_Handles_List">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="OpenHandle" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:long" name="ID"/>
+                          <xs:element type="xs:string" name="Type"/>
+                          <xs:element type="xs:string" name="Path"/>
+                          <xs:element type="xs:int" name="AccessMask"/>
+                          <xs:element type="xs:string" name="Name"/>
+                          <xs:element type="xs:int" name="PID"/>
+                          <xs:element type="xs:unsignedLong" name="PointerCount"/>
+                          <xs:element type="xs:unsignedLong" name="ObjectAddress"/>
+                          <xs:element type="xs:string" name="FromMemory"/>
+                          <xs:element type="xs:string" name="Owner"/>
+                          <xs:element type="xs:string" name="Group"/>
+                          <xs:element type="xs:string" name="Permissions"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Vad_List">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Vad" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:int" name="Protection"/>
+                          <xs:element type="xs:long" name="StartVpn"/>
+                          <xs:element type="xs:long" name="EndVpn"/>
+                          <xs:element type="xs:unsignedLong" name="Address"/>
+                          <xs:element type="xs:unsignedLong" name="Flags"/>
+                          <xs:element type="xs:string" name="Mapped"/>
+                          <xs:element type="xs:string" name="Filename" minOccurs="0"/>
+                          <xs:element type="xs:string" name="Suspicious" minOccurs="0"/>
+                          <xs:element type="xs:string" name="ProcessName"/>
+                          <xs:element type="xs:int" name="PID"/>
+                          <xs:element type="xs:string" name="FromMemory"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="YaraHits">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="YaraHit" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="id"/>
+                          <xs:element type="xs:string" name="Name" minOccurs="0"/>
+                          <xs:element type="xs:string" name="Category" minOccurs="0"/>
+                          </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:byte" name="resultitemtype" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

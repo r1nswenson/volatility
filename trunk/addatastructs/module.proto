@@ -1,0 +1,23 @@
+package memory;
+
+message UnspecifiedType
+{
+	required string baseObjectType = 1;
+	required bytes object = 2;
+}
+
+message ModuleType
+{
+	required string Name = 1;
+	required string Path = 2;
+	required uint64 Address = 3;
+	required uint64 EntryPoint = 4;
+	required int32 Size = 5;
+	optional int32 resultitemtype = 6;
+}
+
+message rootType
+{
+	repeated ModuleType Module = 1;
+}
+

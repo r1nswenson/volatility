@@ -1,0 +1,22 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="hookentry" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="hookedfunction"/>
+              <xs:element type="xs:string" name="hookedmodule"/>
+              <xs:element type="xs:string" name="hookingmodule"/>
+              <xs:element type="xs:string" name="hookingmodule_path"/>
+              <xs:element type="xs:string" name="hookedmodule_path"/>
+              <xs:element type="xs:long" name="hookingaddress"/>
+            </xs:sequence>
+            <xs:attribute type="xs:byte" name="resultitemtype" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

@@ -1,0 +1,22 @@
+package memory;
+
+message UnspecifiedType
+{
+	required string baseObjectType = 1;
+	required bytes object = 2;
+}
+
+message DeviceType
+{
+	required string Name = 1;
+	required uint64 DeviceObj_Location = 2;
+	required uint64 DriverObj_Location = 3;
+	required uint64 NextDeviceObj_Location = 4;
+	required uint64 AttachedDeviceObj_Location = 5;
+}
+
+message rootType
+{
+	repeated DeviceType Device = 1;
+}
+

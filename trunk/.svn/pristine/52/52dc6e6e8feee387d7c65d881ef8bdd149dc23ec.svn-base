@@ -1,0 +1,155 @@
+package memory;
+
+message UnspecifiedType
+{
+	required string baseObjectType = 1;
+	required bytes object = 2;
+}
+
+message DLLType
+{
+	required string Name = 1;
+	required string Description = 2;
+	required string Path = 3;
+	required string Version = 4;
+	required bytes MD5 = 5;
+	required bytes SHA1 = 6;
+	required int32 FuzzySize = 7;
+	required string Fuzzy = 8;
+	required string Fuzzy2X = 9;
+	required string CreateTime = 10;
+	required int64 KFFStatus = 11;
+	required int32 PID = 12;
+	required uint64 baseAddress = 13;
+	required uint64 ImageSize = 14;
+	required string ProcessName = 15;
+	required string FromMemory = 16;
+}
+
+message VadType
+{
+	required int32 Protection = 1;
+	required uint64 StartVpn = 2;
+	required uint64 EndVpn = 3;
+	required uint64 Address = 4;
+	required uint64 Flags = 5;
+	required string Mapped = 6;
+	optional string Filename = 7;
+	optional string Suspicious = 8;
+	required string ProcessName = 9;
+	required int32 PID = 10;
+	required string FromMemory = 11;
+}
+
+message SocketType
+{
+	required int32 Port = 1;
+	required string LocalAddress = 2;
+	required int32 RemotePort = 3;
+	required string RemoteAddress = 4;
+	required string Proto = 5;
+	optional string UDP = 6;
+	required int32 State = 7;
+	required int32 RealState = 8;
+	required string ProcessName = 9;
+	optional string Path = 10;
+	required string FromMemory = 11;
+	required uint32 PID = 12;
+	optional int32 resultitemtype = 13;
+}
+
+message Vad_ListType
+{
+	repeated VadType Vad = 1;
+}
+
+message YaraHitType
+{
+	required string id = 1;
+	optional string Name = 2;
+	optional string Category = 3;
+}
+
+message OpenHandleType
+{
+	required int64 ID = 1;
+	required string Type = 2;
+	required string Path = 3;
+	required int32 AccessMask = 4;
+	required string Name = 5;
+	required int32 PID = 6;
+	required uint64 PointerCount = 7;
+	required uint64 ObjectAddress = 8;
+	required string FromMemory = 9;
+	required string Owner = 10;
+	required string Group = 11;
+	required string Permissions = 12;
+}
+
+message YaraHitsType
+{
+	repeated YaraHitType YaraHit = 1;
+}
+
+message Open_Handles_ListType
+{
+	repeated OpenHandleType OpenHandle = 1;
+}
+
+message Loaded_DLL_ListType
+{
+	repeated DLLType DLL = 1;
+}
+
+message Open_Sockets_ListType
+{
+	repeated SocketType Socket = 1;
+	optional int32 count = 2;
+}
+
+message ProcessType
+{
+	required string Name = 1;
+	required string Path = 2;
+	required string StartTime = 3;
+	required string WorkingDir = 4;
+	required string CommandLine = 5;
+	required int64 LinkTime = 6;
+	required int64 Subsystem = 7;
+	required int64 Imagebase = 8;
+	required int32 Characteristics = 9;
+	required int64 Checksum = 10;
+	required int64 KernelTime = 11;
+	required int64 UserTime = 12;
+	required int64 Privileges = 13;
+	required int32 PID = 14;
+	required int32 ParentPID = 15;
+	required string User = 16;
+	required string Group = 17;
+	required string MD5 = 18;
+	required string SHA1 = 19;
+	required int32 FuzzySize = 20;
+	required string Fuzzy = 21;
+	required string Fuzzy2X = 22;
+	required int64 KFFStatus = 23;
+	optional string Hidden = 24;
+	required string FromMemory = 25;
+	required string EffectiveUser = 26;
+	required string EffectiveGroup = 27;
+	required int32 Size = 28;
+	required uint64 EProcBlockLoc = 29;
+	required string WindowTitle = 30;
+	repeated uint64 SDT = 31;
+	optional Open_Sockets_ListType Open_Sockets_List = 32;
+	optional Loaded_DLL_ListType Loaded_DLL_List = 33;
+	optional Open_Handles_ListType Open_Handles_List = 34;
+	optional Vad_ListType Vad_List = 35;
+	optional YaraHitsType YaraHits = 36;
+	optional uint32 resultitemtype = 37;
+}
+
+message rootType
+{
+	repeated ProcessType Process = 1;
+}
+

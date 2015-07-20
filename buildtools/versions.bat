@@ -1,0 +1,3 @@
+set "PYTHONVER=2.7.8"
+set "PYTHONVER32=2.7.8"
+set "PYTHONDIR=Python27"

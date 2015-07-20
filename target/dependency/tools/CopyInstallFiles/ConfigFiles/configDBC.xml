@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config component = "DBC">
+
+  <pomPath>pom.xml</pomPath>
+  <includePomChildren>false</includePomChildren>
+  <targetDir>target/</targetDir>
+  <destinationRoot>InstallFiles/DBC/</destinationRoot>
+
+  <exlusiveArtifactIds>
+    <depth>1</depth>
+    <id>database</id> 
+   <!-- <id>build-tools</id>
+    <id>EvidenceProcessingClient</id>
+    <id>dna-id-decryption</id>
+    <id>DependencyInjection</id>
+    <id>kff</id>
+    <id>dts_lib</id>
+    <id>text_analysis</id>
+    <id>agent-all</id>
+    <id>EnumEmitter</id>
+    <id>log4net</id>
+    <id>libxslt</id>
+    <id>nunit</id>
+    <id>rhinomocks</id>
+    <id>DIFramework</id>
+    <id>cppunitlite</id>
+    <id>boost</id>
+    <id>npgsql</id>
+    <id>ODP_net</id>
+    <id>visualization-interfaces</id>
+
+    <id>app-database</id>      
+    <id>MAP</id>    
+    <id>floatable-window</id>
+    <id>CustomActions</id>
+    <id>ad-service-interfaces</id>
+    <id>ad-service-channel</id>
+    <id>visualization</id>
+    <id>Devart</id>
+    <id>ediscovery-service-interfaces</id>
+    <id>export-option-interfaces</id>
+    <id>SilverlightTestHelper</id>
+    <id>prism</id>
+    <id>telerik</id>
+    <id>AsyncTargetingPack</id>
+    <id>silverlight-automation</id>
+    <id>orbion</id>
+    <id>codeplex-timeline</id>
+    <id>services-common</id>
+    <id>IISExpressHosting</id>
+    <id>moq</id>
+    <id>LumenWorks</id>
+    <id>pex</id>
+    <id>ria-services-toolkit</id>
+    <id>mvvm_light_toolkit</id>
+    <id>reactive_extensions</id>
+    <id>statlight</id>
+    <id>silverlight-toolkit</id>
+    <id>unity</id>
+    <id>infrastructure-services-interfaces</id>
+    <id>base</id>
+    <id>base-types</id>
+    <id>dna-base</id>
+    <id>openssl</id>
+    <id>socketcomm</id>
+    <id>fipscomm</id>
+    <id>XZip</id>
+    <id>dtSearch</id>
+    <id>eldos</id>  -->
+  </exlusiveArtifactIds>
+
+
+  <!--Create 32 bit-->
+  <folder>
+    <destination>x86/</destination>
+    <include>
+      <startStr>dependency/bin</startStr>
+      <filter>x86Filter.xml</filter>
+      <removeFolder>4</removeFolder>
+    </include>
+  </folder>
+
+  <!--Create 64 bit-->
+  <folder>
+    <destination>x64/</destination>
+    <include>
+      <startStr>dependency/bin</startStr>
+      <filter>x64Filter.xml</filter>
+      <removeFolder>4</removeFolder>
+    </include>
+  </folder>
+
+</config>

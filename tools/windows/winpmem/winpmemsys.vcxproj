@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="checked (PREfast)|Win32">
+      <Configuration>checked (PREfast)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="checked|Win32">
+      <Configuration>checked</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="free|Win32">
+      <Configuration>free</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="api.c" />
+    <ClCompile Include="kd.c" />
+    <ClCompile Include="pci.c" />
+    <ClCompile Include="pte_mmap.c" />
+    <ClCompile Include="pte_mmap_linux.c" />
+    <ClCompile Include="pte_mmap_windows.c" />
+    <ClCompile Include="read.c" />
+    <ClCompile Include="vmem.c" />
+    <ClCompile Include="winpmem.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="api.h" />
+    <ClInclude Include="kd.h" />
+    <ClInclude Include="log.h" />
+    <ClInclude Include="pci.h" />
+    <ClInclude Include="pte_mmap.h" />
+    <ClInclude Include="pte_mmap_linux.h" />
+    <ClInclude Include="pte_mmap_windows.h" />
+    <ClInclude Include="read.h" />
+    <ClInclude Include="vmem.h" />
+    <ClInclude Include="winpmem.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="api.h.in" />
+    <None Include="bld.bat" />
+    <None Include="build_winpmem.py" />
+    <None Include="CreateTestADDriversStore.bat" />
+    <None Include="CustomVars.props" />
+    <None Include="ddkbuild.cmd" />
+    <None Include="LICENSE" />
+    <None Include="makefile" />
+    <None Include="obfuscator.py" />
+    <None Include="README" />
+    <None Include="SOURCES" />
+    <None Include="winpmem.py" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9CF29013-6F41-41AC-9A50-2E0AE8357DB1}</ProjectGuid>
+    <RootNamespace>winpmemsys</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='checked (PREfast)|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='checked|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='free|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="$(SolutionDir)$(SolutionName).proj.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='checked (PREfast)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(MSBuildThisFileDirectory)\CustomVars.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='checked|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(MSBuildThisFileDirectory)\CustomVars.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='free|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(MSBuildThisFileDirectory)\CustomVars.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30128.1</_ProjectFileVersion>
+    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='free|Win32'">bld.bat fre -Z</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='free|Win32'">bld.bat fre -cZ</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine Condition="'$(Configuration)|$(Platform)'=='free|Win32'" />
+    <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='free|Win32'" />
+    <NMakePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='free|Win32'">DBG=0;WINVER=0x0600;</NMakePreprocessorDefinitions>
+    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='checked|Win32'">bld.bat chk -Z</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='checked|Win32'">bld.bat chk -cZ</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine Condition="'$(Configuration)|$(Platform)'=='checked|Win32'" />
+    <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='checked|Win32'" />
+    <NMakePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='checked|Win32'">DBG=1;WINVER=0x0600;</NMakePreprocessorDefinitions>
+    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='checked (PREfast)|Win32'">bld.bat chk -Z prefast</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='checked (PREfast)|Win32'">bld.bat chk -cZ prefast</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine Condition="'$(Configuration)|$(Platform)'=='checked (PREfast)|Win32'" />
+    <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='checked (PREfast)|Win32'" />
+    <NMakePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='checked (PREfast)|Win32'">DBG=1;WINVER=0x0600;</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

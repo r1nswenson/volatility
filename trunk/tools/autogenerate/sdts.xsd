@@ -1,0 +1,40 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="SSDTs">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SSDT">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:long" name="VirtAddr"/>
+                    <xs:element name="SSDTEntries">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="SSDTEntry" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="FunctionName"/>
+                                <xs:element type="xs:string" name="ModuleName"/>
+                                <xs:element type="xs:int" name="VirtAddr"/>
+                              </xs:sequence>
+                              <xs:attribute type="xs:byte" name="Index" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute type="xs:short" name="count"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+
+

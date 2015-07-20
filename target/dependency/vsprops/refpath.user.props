@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="macros.user.props" Condition="'$(DependencyDir)' == ''" />
+  <Choose>
+    <When Condition="'$(FrameworkName)'=='silverlight'">
+      <PropertyGroup>
+        <ReferencePath>$(DependencyDir)bin\$(FrameworkName)\$(Configuration);$(DependencyDir)bin\$(FrameworkName)\Any;$(DependencyDir)bin\$(FrameworkName)\3rdparty;$(DependencyDir)bin\all</ReferencePath>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <Choose>
+        <When Condition="'$(NativePlatform)'=='any'">
+          <PropertyGroup>
+            <ReferencePath>$(DependencyDir)bin\$(FrameworkName)\$(Configuration).x64;$(DependencyDir)bin\$(FrameworkName)\$(Configuration).Win32;$(DependencyDir)bin\$(FrameworkName)\x64;$(DependencyDir)bin\$(FrameworkName)\Win32;$(DependencyDir)bin\$(FrameworkName)\$(Configuration);$(DependencyDir)bin\dotnet\$(Configuration);$(DependencyDir)bin\$(FrameworkName)\Any;$(DependencyDir)bin\$(FrameworkName)\3rdparty;$(DependencyDir)bin\dotnet\3rdparty;$(DependencyDir)bin\all</ReferencePath>
+          </PropertyGroup>
+        </When>
+        <Otherwise>
+          <PropertyGroup>
+            <ReferencePath>$(DependencyDir)bin\$(FrameworkName)\$(Configuration).$(NativePlatform);$(DependencyDir)bin\$(FrameworkName)\$(NativePlatform);$(DependencyDir)bin\$(FrameworkName)\$(Configuration);$(DependencyDir)bin\dotnet\$(Configuration);$(DependencyDir)bin\$(FrameworkName)\Any;$(DependencyDir)bin\$(FrameworkName)\3rdparty;$(DependencyDir)bin\dotnet\3rdparty;$(DependencyDir)bin\all</ReferencePath>
+          </PropertyGroup>
+        </Otherwise>
+      </Choose>
+    </Otherwise>
+  </Choose>
+</Project>

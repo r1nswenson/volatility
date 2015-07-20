@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config component = "MAP">
+
+  <pomPath>pom.xml</pomPath>
+  <includePomChildren>false</includePomChildren>
+  <targetDir>target/</targetDir>
+  <destinationRoot>InstallFiles/MAP/</destinationRoot>
+
+  <!--Create 32 bit-->
+  <folder>
+    <destination>x86/</destination>
+    <include>
+      <startStr>dependency/web</startStr>
+      <filter>WebFilter.xml</filter>
+      <removeFolder>2</removeFolder>
+      <specialPostCase>.32</specialPostCase>
+    </include>
+  </folder>
+
+  <!--Create 64 bit-->
+  <folder>
+    <destination>x64/</destination>
+    <include>
+      <startStr>dependency/web</startStr>
+      <filter>WebFilter.xml</filter>
+      <removeFolder>2</removeFolder>
+    </include>
+  </folder>
+
+</config>

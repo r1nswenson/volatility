@@ -1,0 +1,109 @@
+# first run lm
+lm
+00000000`ffc90000 00000000`ffd73000   calc       (pdb symbols)          c:\sym\ms\calc.pdb\E95BB5E08CE640A09C3DBF3DFA3ABCB42\calc.pdb
+
+dt ntdll!_image_dos_header 00000000`ffc90000
+   +0x000 e_magic          : 0x5a4d
+   +0x002 e_cblp           : 0x90
+   +0x004 e_cp             : 3
+   +0x006 e_crlc           : 0
+   +0x008 e_cparhdr        : 4
+   +0x00a e_minalloc       : 0
+   +0x00c e_maxalloc       : 0xffff
+   +0x00e e_ss             : 0
+   +0x010 e_sp             : 0xb8
+   +0x012 e_csum           : 0
+   +0x014 e_ip             : 0
+   +0x016 e_cs             : 0
+   +0x018 e_lfarlc         : 0x40
+   +0x01a e_ovno           : 0
+   +0x01c e_res            : [4] 0
+   +0x024 e_oemid          : 0
+   +0x026 e_oeminfo        : 0
+   +0x028 e_res2           : [10] 0
+   +0x03c e_lfanew         : 0n240
+
+#right after image_dos_header
+#define IMAGE_NT_SIGNATURE              0x00004550  // PE00
+0:004> dd (00000000`ffc90000+0n240) l1 
+00000000`ffc900f0  00004550
+
+# 4 bytes after signature   
+   0:004> dt ntdll!_image_file_header (00000000`ffc90000+0n240+4)
+   +0x000 Machine          : 0x8664
+   +0x002 NumberOfSections : 6
+   +0x004 TimeDateStamp    : 0x4a5bc9d4
+   +0x008 PointerToSymbolTable : 0
+   +0x00c NumberOfSymbols  : 0
+   +0x010 SizeOfOptionalHeader : 0xf0
+   +0x012 Characteristics  : 0x22
+
+0:004> ? @@(sizeof(ntdll!_image_file_header))
+Evaluate expression: 20 = 00000000`00000014
+
+0:004> dt ntdll!_image_optional_header64 00000000`ffc90000+0n240+4+@@(sizeof(ntdll!_image_file_header))
+   +0x000 Magic            : 0x20b
+   +0x002 MajorLinkerVersion : 0x9 ''
+   +0x003 MinorLinkerVersion : 0 ''
+   +0x004 SizeOfCode       : 0x60e00
+   +0x008 SizeOfInitializedData : 0x7f200
+   +0x00c SizeOfUninitializedData : 0
+   +0x010 AddressOfEntryPoint : 0x1b9b8
+   +0x014 BaseOfCode       : 0x1000
+   +0x018 ImageBase        : 0xffc90000
+   +0x020 SectionAlignment : 0x1000
+   +0x024 FileAlignment    : 0x200
+   +0x028 MajorOperatingSystemVersion : 6
+   +0x02a MinorOperatingSystemVersion : 1
+   +0x02c MajorImageVersion : 6
+   +0x02e MinorImageVersion : 1
+   +0x030 MajorSubsystemVersion : 6
+   +0x032 MinorSubsystemVersion : 1
+   +0x034 Win32VersionValue : 0
+   +0x038 SizeOfImage      : 0xe3000
+   +0x03c SizeOfHeaders    : 0x600
+   +0x040 CheckSum         : 0xeb7cb
+   +0x044 Subsystem        : 2
+   +0x046 DllCharacteristics : 0x8140
+   +0x048 SizeOfStackReserve : 0x80000
+   +0x050 SizeOfStackCommit : 0x2000
+   +0x058 SizeOfHeapReserve : 0x100000
+   +0x060 SizeOfHeapCommit : 0x1000
+   +0x068 LoaderFlags      : 0
+   +0x06c NumberOfRvaAndSizes : 0x10
+   +0x070 DataDirectory    : [16] _IMAGE_DATA_DIRECTORY
+
+
+/* Section headers are immediately after PE optional header. */
+#define SECHDROFFSET(a) ((LPVOID)((BYTE *)a               +  \
+                         ((PIMAGE_DOS_HEADER)a)->e_lfanew +  \
+                           SIZE_OF_NT_SIGNATURE           +  \
+                           sizeof (IMAGE_FILE_HEADER)     +  \
+                           sizeof (IMAGE_OPTIONAL_HEADER)))   
+
+
+0:004> dt ole32!_image_section_header 00000000`ffc90000+0n240+4+@@(sizeof(ntdll!_image_file_header))+@@(sizeof(ntdll!_image_optional_header64))
+   +0x000 Name             : [8]  ".text"
+   +0x008 Misc             : <unnamed-tag>
+   +0x00c VirtualAddress   : 0x1000
+   +0x010 SizeOfRawData    : 0x60e00
+   +0x014 PointerToRawData : 0x600
+   +0x018 PointerToRelocations : 0
+   +0x01c PointerToLinenumbers : 0
+   +0x020 NumberOfRelocations : 0
+   +0x022 NumberOfLinenumbers : 0
+   +0x024 Characteristics  : 0x60000020
+                          
+ dt -a16 ntdll!_IMAGE_DATA_DIRECTORY (00000000`ffc90000+0n240+4+@@(sizeof(ntdll!_image_file_header))+0x70)
+[0] @ 00000000`ffc90178 
+---------------------------------------------
+   +0x000 VirtualAddress   : 0
+   +0x004 Size             : 0
+
+[1] @ 00000000`ffc90180 
+---------------------------------------------
+   +0x000 VirtualAddress   : 0x66318
+   +0x004 Size             : 0x154
+
+* raw section data  
+** db section_header->VirtualAddress+optional_header->ImageBaseAddress L?section_header->SizeOfRawData   

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <Import Project="refpath.user.props" />
+  <PropertyGroup Label="UserMacros">
+    <UsrLibsBin>$(DependencyDir)bin\$(FrameworkName)\$(Platform);$(DependencyDir)bin\$(FrameworkName)\$(Configuration).$(Platform)\</UsrLibsBin>
+    <UsrLibsLib>$(DependencyDir)lib\$(FrameworkName)\$(Platform);$(DependencyDir)lib\$(FrameworkName)\$(Configuration).$(Platform)\</UsrLibsLib>
+    <UsrLibsInc>$(DependencyDir)include\</UsrLibsInc>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LibraryPath>$(UsrLibsLib);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(UsrLibsInc);$(IncludePath)</IncludePath>
+    <ExecutablePath>$(UsrLibsBin);$(ExecutablePath)</ExecutablePath>
+    <IntDir>$(ProjIntermediateDir)</IntDir>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(NativeType)'=='StaticLibrary'">
+    <OutDir>$(SlnOutLibDir)</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(NativeType)'!='StaticLibrary'">
+    <OutDir>$(SlnOutBinDir)</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(UsrLibsInc);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Lib>
+      <AdditionalLibraryDirectories>$(UsrLibsLib);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+    <Link>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(SlnOutLibDir)$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(NativeType)'=='StaticLibrary'">
+    <ClCompile>
+      <ProgramDataBaseFileName>$(SlnOutLibDir)$(TargetName).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="UsrLibsLib">
+      <Value>$(UsrLibsLib)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="UsrLibsInc">
+      <Value>$(UsrLibsInc)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="UsrLibsBin">
+      <Value>$(UsrLibsBin)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+  </ItemGroup>
+  <ItemDefinitionGroup Condition="'$(AD_ENABLE_BOOST_SERIALIZATION)'==''">
+    <ClCompile>
+      <PreprocessorDefinitions>BOOST_SERIALIZATION_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+</Project>

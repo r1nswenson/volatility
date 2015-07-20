@@ -1,0 +1,24 @@
+{
+    "operation":"run",
+    "filestreamtoanalyze":"\\\\.\\pmem",
+    "profiletypename":"Win7SP1x64",
+    "acceptedvaluesforoperation":"rungetguidCreateRepository",
+    "yararulesdirectory":"",
+    "outputpath":"C:\\compare\\volxpx86\\mem\\",
+    "operationdata":
+    {
+        "process":"true",
+        "handles":"false",
+        "registry":"false",
+        "processdlls":"false",
+        "drivers":"false",
+        "sdts":"false",
+        "idt":"true",
+        "crypto":"false",
+        "sockets":"false",
+        "vad":"false",
+        "driverirphook":"false",
+        "modules":"false",
+        "floatingdrivers" : "false"
+    }
+}

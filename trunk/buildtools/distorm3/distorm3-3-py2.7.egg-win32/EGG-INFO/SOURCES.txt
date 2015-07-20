@@ -1,0 +1,17 @@
+setup.cfg
+setup.py
+python/distorm3/__init__.py
+python/distorm3/sample.py
+python/distorm3.egg-info/PKG-INFO
+python/distorm3.egg-info/SOURCES.txt
+python/distorm3.egg-info/dependency_links.txt
+python/distorm3.egg-info/top_level.txt
+src/decoder.c
+src/distorm.c
+src/instructions.c
+src/insts.c
+src/mnemonics.c
+src/operands.c
+src/prefix.c
+src/textdefs.c
+src/wstring.c

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<filter>
+  <!-- Global Invalid Extensions -->
+  <invalidExt ext="pdb"/>
+
+  <!-- Invalid Strings -->
+  <invalidStr str="Debug"/>
+
+  <!-- Exceptions - always include if contains strings-->
+  <includeStr str="SharedTypes.XML" />
+  <includeStr str="npgsql.XML" />
+  <includeStr str="Microsoft.Practices.Unity.xml" />
+  <includeStr str="Microsoft.Practices.Unity.Interception.xml" />
+
+
+  <!-- valid classifiers -->
+
+
+  <classifier value="all">
+    <invalidExt ext="xml" />
+    <platform value="Any" />
+    <platform value="Release.x64" />
+    <platform value="Release/" />
+    <platform value="x64" />
+  </classifier>
+
+  <classifier value="silverlight">
+    <invalidExt ext="xml" />
+    <platform value="Any" />
+    <platform value="Release.x64" />
+    <platform value="Release/" />
+    <platform value="x64" />
+  </classifier>
+
+  <classifier value="vc90">
+    <invalidExt ext="xml" />
+    <platform value="Any" />
+    <platform value="Release.x64" />
+    <platform value="Release/" />
+    <platform value="x64" />
+  </classifier>
+
+  <classifier value="vc100">
+    <invalidExt ext="xml" />
+    <platform value="Any" />
+    <platform value="Release.x64" />
+    <platform value="Release/" />
+    <platform value="x64" />
+  </classifier>
+
+</filter>

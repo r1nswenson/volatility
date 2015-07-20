@@ -1,0 +1,59 @@
+print memoryData[sec1.VirtualAddress:sec1.VirtualAddress+10].encode("hex")
+
+>>> loadedPe.sections[0].Name
+'.text\x00\x00\x00'
+>>> str(loadedPe.sections[0].Name)
+'.text\x00\x00\x00'
+>>> str(loadedPe.sections[0])
+'[IMAGE_SECTION_HEADER]\n0x1E0      0x0   Name:                          .text\n0x1E8      0x8   Misc:                          0x19354   \n0x1E8      0x8   Misc_PhysicalAddress:          0x19354   \n0x1E8      0x8   Misc_VirtualSize:              0x19354   \n0x1EC      0xC   VirtualAddress:                0x1000    \n0x1F0      0x10  SizeOfRawData:                 0x19400   \n0x1F4      0x14  PointerToRawData:              0x400     \n0x1F8      0x18  PointerToRelocations:          0x0       \n0x1FC      0x1C  PointerToLinenumbers:          0x0       \n0x200      0x20  NumberOfRelocations:           0x0       \n0x202      0x22  NumberOfLinenumbers:           0x0       \n0x204      0x24  Characteristics:               0x60000020'
+>>> str(loadedPe.sections[0].dump_dict())
+"{'PointerToRawData': {'FileOffset': 500, 'Value': 1024, 'Offset': 20}, 'Name': {'FileOffset': 480, 'Value': '.text', 'Offset': 0}, 'NumberOfRelocations': {'FileOffset': 512, 'Value': 0, 'Offset': 32}, 'Misc_VirtualSize': {'FileOffset': 488, 'Value': 103252, 'Offset': 8}, 'Characteristics': {'FileOffset': 516, 'Value': 1610612768, 'Offset': 36}, 'Misc': {'FileOffset': 488, 'Value': 103252, 'Offset': 8}, 'PointerToLinenumbers': {'FileOffset': 508, 'Value': 0, 'Offset': 28}, 'SizeOfRawData': {'FileOffset': 496, 'Value': 103424, 'Offset': 16}, 'Misc_PhysicalAddress': {'FileOffset': 488, 'Value': 103252, 'Offset': 8}, 'PointerToRelocations': {'FileOffset': 504, 'Value': 0, 'Offset': 24}, 'VirtualAddress': {'FileOffset': 492, 'Value': 4096, 'Offset': 12}, 'Structure': 'IMAGE_SECTION_HEADER', 'NumberOfLinenumbers': {'FileOffset': 514, 'Value': 0, 'Offset': 34}}"
+>>> str(loadedPe.sections[0].name)
+'IMAGE_SECTION_HEADER'
+>>> str(loadedPe.sections[0].Name)
+'.text\x00\x00\x00'
+>>> str(loadedPe.sections[0].Name) == '.text\x00\x00\x00'
+True
+>>> [s for s in loadedPe.sections if str(s.Name) == '.text\x00\x00\x00']
+[<Structure: [IMAGE_SECTION_HEADER] 0x1E0 0x0 Name: .text 0x1E8 0x8 Misc: 0x19354 0x1E8 0x8 Misc_PhysicalAddress: 0x19354 0x1E8 0x8 Misc_VirtualSize: 0x19354 0x1EC 0xC VirtualAddress: 0x1000 0x1F0 0x10 SizeOfRawData: 0x19400 0x1F4 0x14 PointerToRawData: 0x400 0x1F8 0x18 PointerToRelocations: 0x0 0x1FC 0x1C PointerToLinenumbers: 0x0 0x200 0x20 NumberOfRelocations: 0x0 0x202 0x22 NumberOfLinenumbers: 0x0 0x204 0x24 Characteristics: 0x60000020>]
+>>> print [s for s in loadedPe.sections if str(s.Name) == '.text\x00\x00\x00']
+[<Structure: [IMAGE_SECTION_HEADER] 0x1E0 0x0 Name: .text 0x1E8 0x8 Misc: 0x19354 0x1E8 0x8 Misc_PhysicalAddress: 0x19354 0x1E8 0x8 Misc_VirtualSize: 0x19354 0x1EC 0xC VirtualAddress: 0x1000 0x1F0 0x10 SizeOfRawData: 0x19400 0x1F4 0x14 PointerToRawData: 0x400 0x1F8 0x18 PointerToRelocations: 0x0 0x1FC 0x1C PointerToLinenumbers: 0x0 0x200 0x20 NumberOfRelocations: 0x0 0x202 0x22 NumberOfLinenumbers: 0x0 0x204 0x24 Characteristics: 0x60000020>]
+>>> print [s for s in loadedPe.sections if str(s.Name) == '.text\x00\x00\x00'][0]
+
+for sec in loadedPe.sections: print sec
+
+sec1 = loadedPe.sections[0]
+oh1 = loadedPe.OPTIONAL_HEADER
+d1=loadedPe.__data__
+
+sec2 = filePe.sections[0]
+oh2 = filePe.OPTIONAL_HEADER
+d2=filePe.__data__
+
+s1=loadedPe.sections[0]
+s2=filePe.sections[0]
+
+#import data directory
+#IMAGE_DIRECTORY_ENTRY_IAT=12
+idd1 = oh1.DATA_DIRECTORY[12]
+idd2= oh2.DATA_DIRECTORY[12]
+
+ohdd = oh1.DATA_DIRECTORY
+for dd in ohdd: print dd
+
+t1=d1[s1.VirtualAddress:s1.VirtualAddress + s1.SizeOfRawData]
+t2=d2[s2.PointerToRawData:s2.PointerToRawData + s2.SizeOfRawData]
+
+print len(t1), len(t2)
+
+file1=open("c:\\f1.txt", "w")
+file1.write(td1.encode("hex"))
+file1.close()
+
+file2=open("c:\\f2.txt", "w")
+file2.write(td2.encode("hex"))
+file2.close()
+
+
+t1=d1[s1.VirtualAddress + idd1.Size:s1.VirtualAddress + s1.SizeOfRawData - idd1.Size]
+t2=d2[s2.PointerToRawData + idd2.Size:s2.PointerToRawData + s2.SizeOfRawData - idd2.Size]

@@ -1,0 +1,36 @@
+package memory;
+
+message UnspecifiedType
+{
+	required string baseObjectType = 1;
+	required bytes object = 2;
+}
+
+message IDTEntryType
+{
+	optional string InterruptGate = 1;
+	optional string TaskGate = 2;
+	optional string InvalidGate = 3;
+	optional string TrapGate = 4;
+	required uint64 Address = 5;
+	optional string Module = 6;
+	required int32 Selector = 7;
+	required int32 Attributes = 8;
+}
+
+message InterruptDescriptorTableType
+{
+	repeated IDTEntryType IDTEntry = 1;
+}
+
+message ProcessorType
+{
+	required int32 ID = 1;
+	required InterruptDescriptorTableType InterruptDescriptorTable = 2;
+}
+
+message rootType
+{
+	repeated ProcessorType Processor = 1;
+}
+

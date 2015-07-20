@@ -1,0 +1,36 @@
+package memory;
+
+message UnspecifiedType
+{
+	required string baseObjectType = 1;
+	required bytes object = 2;
+}
+
+message RegistryValueType
+{
+	required string Name = 1;
+	required int32 Type = 2;
+	required bytes Value = 3;
+	optional int32 resultitemtype = 4;
+}
+
+message ValuesType
+{
+	repeated RegistryValueType RegistryValue = 1;
+	optional int32 Count = 2;
+}
+
+message RegistryKeyType
+{
+	required string Name = 1;
+	required string Path = 2;
+	required bool Volatile = 3;
+	required ValuesType Values = 4;
+	optional int32 resultitemtype = 5;
+}
+
+message rootType
+{
+	repeated RegistryKeyType RegistryKey = 1;
+}
+

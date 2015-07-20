@@ -1,0 +1,145 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>ad.3rdparty</groupId>
+  <artifactId>volatility</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0.0.22-SNAPSHOT</version>
+  <name>volatility</name>
+
+  <scm>
+    <connection>scm:svn:https://r1svn/svn/components/3rdparty/volatility/trunk</connection>
+  </scm>
+
+  <parent>
+    <groupId>ad.3rdparty</groupId>
+    <artifactId>parent</artifactId>
+    <version>2.2</version>
+  </parent>
+
+  <dependencies>
+    <dependency>
+      <groupId>ad.3rdparty</groupId>
+      <artifactId>build-tools</artifactId>
+      <version>1.11</version>
+      <type>zip</type>
+      <classifier>vc-all</classifier>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>ad.tools</groupId>
+      <artifactId>build-tools</artifactId>
+      <version>2.76</version>
+      <type>zip</type>
+      <classifier>vc-all</classifier>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>ad.CM</groupId>
+      <artifactId>SigningTool</artifactId>
+      <version>1.0.0.30</version>
+      <type>zip</type>
+      <classifier>vc-all</classifier>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Unpack dependencies -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>build</directory>
+            </fileset>
+            <fileset>
+              <directory>dist</directory>
+            </fileset>
+            <fileset>
+              <directory>tools/windows/winpmem/</directory>
+              <includes>
+                <include>objchk*</include>
+                <include>objfre*</include>
+                <include>**/*.mac</include>
+                <include>**/*.err</include>
+                <include>**/*.log</include>
+                <include>**/*.obj</include>
+                <include>**/*.pdb</include>
+                <include>**/*.sys</include>
+              </includes>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>    
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- build library -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <executions>
+          <!-- Build library -->
+          <execution>
+            <id>build</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>buildsln.bat</executable>
+              <workingDirectory>.</workingDirectory>
+              <arguments>
+                <argument>${msbuild.platform}</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>get-source</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>buildtools/get.bat</executable>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- Package up binaries (headers, libs, dlls) -->
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <attach>true</attach>
+          <descriptors>
+            <descriptor>files.xml</descriptor>
+          </descriptors>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<filter>
+  <!-- Global Invalid Extensions -->
+  <invalidExt ext="pdb"/>
+
+  <!-- Invalid Strings -->
+  <invalidStr str="Debug"/>
+
+  <!-- Exceptions - always include if contains strings-->
+  <includeStr str="custom.xml" />
+
+  <!-- valid classifiers -->
+
+  <classifier value="">
+    <!-- All Classifiers are valid-->
+    <invalidExt ext="xml" />
+    <platform value="" />
+    <!-- Any platform is valid -->
+  </classifier>
+
+</filter>
